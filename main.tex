@@ -1,0 +1,151 @@
+%=======================================================================
+%
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Trabalho Academico  em conformidade com 
+% ABNT NBR 14724:2011: Informacao e documentacao - Trabalhos academicos
+% ------------------------------------------------------------------------
+%Customização IFC
+% ------------------------------------------------------------------------
+% Autor:  Tiago Possato (tiago.possato@yahoo.com.br), baseado no modelo de Eliton Tiago (elitontiago@hotmail.com)
+% Versão: 08 de Outubro de 2017.
+% Codificação: UTF-8
+% LaTeX:  abnTeX2
+%
+%=======================================================================
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte	
+	oneside,          % não imprimir em verso e anverso, oposto do twoside 
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	brazil			% o último idioma é o principal do documento
+	,sumario=tradicional,
+	]{abntex2-IFC}
+
+
+\include{config_inicial}
+
+%----Include da capa é fora do documento 
+\include{pretextuais/capa}
+%---
+
+\begin{document}
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+
+%--- CAPA ----
+\imprimircapa
+
+% --- FOLHA DE ROSTO
+\imprimirfolhaderosto
+% \imprimirfolhaderosto* (o * indica que haverá a ficha bibliográfica)
+
+% Inserir FOLHA DE APROVAÇÃO
+\include{pretextuais/folhadeaprovacao}
+
+% Inserir FOLHA DE AUTORIZAÇÃO
+% \include{pretextuais/folhadeautorizacao}
+
+% DEDICATÓRIA
+\include{pretextuais/dedicatoria}
+
+% AGRADECIMENTO
+\include{pretextuais/agradecimentos}
+
+%EPÍGRAFE
+\include{pretextuais/epigrafe}
+
+% RESUMO
+\include{pretextuais/resumo}
+
+% lista de ilustrações
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% lista de quadros
+% --- 
+%PRECISO VER COMO FAZER O CONTROLE DE QUANDO TIVER MENOS Q 10 VAI PARA LISTA DE ILUSTRAÇÕES
+\pdfbookmark[0]{\listofquadrosname}{loq}
+%\listofquadros*
+%\cleardoublepage
+% ---
+
+% LISTA DE TABELAS
+\pdfbookmark[0]{\listtablename}{lot}
+%\listoftables*
+%\cleardoublepage  %-- força proxima pagina
+
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+\begin{siglas}
+  \item[SIGLA] descrição
+
+\end{siglas}
+% ---
+
+% ---
+% inserir lista de símbolos
+% ---
+%\begin{simbolos}
+%  \item[$ \Gamma $] Descrever o que o símbolo representa em seu trabalho. Exemplo abaixo.
+%  \item[$ \omega $] Frequência angular [rad/s].
+%  \item[$ \zeta $] Coeficiente de amortecimento.
+
+%\end{simbolos}
+% ---
+
+% SUMARIO
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+% ------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ------------------------------------------------------
+\textual
+% INTRODUÇÃO
+\include{conteudo/introducao}
+
+%Revisão
+\include{conteudo/desenvolvimento}
+
+%CONCLUSÃO
+\include{conteudo/conclusao}
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+
+\bibliography{referencias}
+
+%Apêndices
+% \include{postextuais/apendice}
+
+%Anexos
+% \include{postextuais/anexo}
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+% \printindex
+\end{document}
